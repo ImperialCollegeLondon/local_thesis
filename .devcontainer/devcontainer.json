@@ -1,0 +1,10 @@
+{
+	"name": "TeX Live base",
+	"image": "personalroboticsimperial/prl:latex",
+	"extensions": [
+		"james-yu.latex-workshop",
+		"streetsidesoftware.code-spell-checker"
+	],
+	"remoteuser": "vscode",
+	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+}

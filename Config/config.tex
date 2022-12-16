@@ -1,0 +1,378 @@
+% ****************************************************************************************************
+% classicthesis-config.tex
+% formerly known as loadpackages.sty, classicthesis-ldpkg.sty, and classicthesis-preamble.sty
+% Use it at the beginning of your ClassicThesis.tex, or as a LaTeX Preamble
+% in your ClassicThesis.{tex,lyx} with \input{classicthesis-config}
+% ****************************************************************************************************
+% If you like the classicthesis, then I would appreciate a postcard.
+% My address can be found in the file ClassicThesis.pdf. A collection
+% of the postcards I received so far is available online at
+% http://postcards.miede.de
+% ****************************************************************************************************
+
+
+% ****************************************************************************************************
+% 0. Set the encoding of your files. UTF-8 is the only sensible encoding nowadays. If you can't read
+% äöüßáéçèê∂åëæƒÏ€ then change the encoding setting in your editor, not the line below. If your editor
+% does not support utf8 use another editor!
+% ****************************************************************************************************
+\PassOptionsToPackage{utf8}{inputenc}
+  \usepackage{inputenc}
+
+\PassOptionsToPackage{T1}{fontenc} % T2A for cyrillics
+  \usepackage{fontenc}
+  \usepackage{ae,aecompl}
+
+
+% ****************************************************************************************************
+% 1. Configure classicthesis for your needs here, e.g., remove "drafting" below
+% in order to deactivate the time-stamp on the pages
+% (see ClassicThesis.pdf for more information):
+% ****************************************************************************************************
+\PassOptionsToPackage{
+  drafting=false,    % print version information on the bottom of the pages
+  tocaligned=false, % the left column of the toc will be aligned (no indentation)
+  dottedtoc=true,  % page numbers in ToC flushed right
+  eulerchapternumbers=true, % use AMS Euler for chapter font (otherwise Palatino)
+  linedheaders=false,       % chaper headers will have line above and beneath
+  floatperchapter=true,     % numbering per chapter for all floats (i.e., Figure 1.1)
+  eulermath=false,  % use awesome Euler fonts for mathematical formulae (only with pdfLaTeX)
+  beramono=true,    % toggle a nice monospaced font (w/ bold)
+  palatino=true,    % deactivate standard font for loading another one, see the last section at the end of this file for suggestions
+  style=classicthesis % classicthesis, arsclassica
+}{classicthesis}
+
+
+% ****************************************************************************************************
+% 2. Personal data and user ad-hoc commands (insert your own data here)
+% ****************************************************************************************************
+\newcommand{\myTitle}{Title\xspace} % Whole title
+\newcommand{\myTitleLineOne}{Title Line\xspace}
+
+
+\newcommand{\myDegree}{Thesis submitted for the degree of Doctor of Philosophy\xspace}
+\newcommand{\myName}{My Name\xspace}
+\newcommand{\myProf}{My Profris\xspace}
+\newcommand{\myOtherProf}{My Other Prof\xspace}
+\newcommand{\myGroup}{\href{www.group-website.com}{\color{Black}{Group-Website}}\xspace}
+\newcommand{\myDepartment}{Department of Electrical and Electronic Engineering\xspace}
+\newcommand{\myUni}{Imperial College London\xspace}
+\newcommand{\myLocation}{London\xspace}
+\newcommand{\myTime}{Month-Year\xspace}
+\newcommand{\myVersion}{\classicthesis\xspace}
+
+% ********************************************************************
+% Setup, finetuning, and useful commands
+% ********************************************************************
+\providecommand{\mLyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+\newcommand{\ie}{i.\,e.}
+\newcommand{\Ie}{I.\,e.}
+\newcommand{\eg}{e.\,g.}
+\newcommand{\Eg}{E.\,g.}
+\newcommand{\etal}{et\,al. }
+\newcommand{\superth}{\textsuperscript{th}}
+\newcommand{\superst}{\textsuperscript{st}}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\bheading}[1]{\multicolumn{1}{c}{\textbf{#1}}}
+\newcommand{\bheadingtwo}[2]{\multicolumn{1}{c}{\textbf{\begin{tabular}[c]{@{}c@{}}#1\\#2\end{tabular}}}}
+% ****************************************************************************************************
+
+
+% ****************************************************************************************************
+% 3. Loading some handy packages
+% ****************************************************************************************************
+% ********************************************************************
+% Packages with options that might require adjustments
+% ********************************************************************
+\PassOptionsToPackage{american}{babel} % change this to your language(s), main language last
+% Spanish languages need extra options in order to work with this template
+%\PassOptionsToPackage{spanish,es-lcroman}{babel}
+    \usepackage{babel}
+
+\usepackage{csquotes}
+\PassOptionsToPackage{%
+  %backend=biber,bibencoding=utf8, %instead of bibtex
+  backend=bibtex8,bibencoding=ascii,%
+  language=auto,%
+  % style=numeric-comp,%
+  style=authoryear-comp, % Author 1999, 2010
+  %bibstyle=authoryear,dashed=false, % dashed: substitute rep. author with ---
+  sorting=nyt, % name, year, title
+  maxbibnames=10, % default: 3, et al.
+  backref=true,%
+  % backrefstyle=all+,%
+  % backreffloats=true,%
+  natbib=true % natbib compatibility mode (\citep and \citet still work)
+}{biblatex}
+    \usepackage{biblatex}
+
+% \PassOptionsToPackage{fleqn}{amsmath}       % math environments and more by the AMS
+  \usepackage{amsmath}
+
+% ********************************************************************
+% General useful packages
+% ********************************************************************
+\usepackage[pdftex]{graphicx} %
+\usepackage{scrhack} % fix warnings when using KOMA with listings package
+\usepackage{xspace} % to get the spacing after macros right
+\PassOptionsToPackage{printonlyused,smaller}{acronym}
+  \usepackage{acronym} % nice macros for handling all acronyms in the thesis
+  %\renewcommand{\bflabel}[1]{{#1}\hfill} % fix the list of acronyms --> no longer working
+  %\renewcommand*{\acsfont}[1]{\textsc{#1}}
+  %\renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
+  %\def\bflabel#1{{#1\hfill}}
+  \def\bflabel#1{{\acsfont{#1}\hfill}}
+  \def\aclabelfont#1{\acsfont{#1}}
+% ****************************************************************************************************
+%\usepackage{pgfplots} % External TikZ/PGF support (thanks to Andreas Nautsch)
+%\usetikzlibrary{external}
+%\tikzexternalize[mode=list and make, prefix=ext-tikz/]
+% ****************************************************************************************************
+
+
+% ****************************************************************************************************
+% 4. Setup floats: tables, (sub)figures, and captions
+% ****************************************************************************************************
+\usepackage{tabularx} % better tables
+  \setlength{\extrarowheight}{3pt} % increase table row height
+\usepackage[flushleft]{threeparttable}
+\usepackage{rotating}
+\newcommand{\tableheadline}[1]{\multicolumn{1}{l}{\spacedlowsmallcaps{#1}}}
+\newcommand{\myfloatalign}{\centering} % to be used with each float for alignment
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\usepackage{subcaption}
+% ****************************************************************************************************
+
+
+% ****************************************************************************************************
+% 5. Setup code listings
+% ****************************************************************************************************
+\usepackage{listings}
+%\lstset{emph={trueIndex,root},emphstyle=\color{BlueViolet}}%\underbar} % for special keywords
+\lstset{language=[LaTeX]Tex,%C++,
+  morekeywords={PassOptionsToPackage,selectlanguage},
+  keywordstyle=\color{ImperialPurple},%\bfseries,
+  basicstyle=\small\ttfamily,
+  %identifierstyle=\color{NavyBlue},
+  commentstyle=\color{ImperialBlue}\ttfamily,
+  stringstyle=\color{ImperialRed},
+  numbers=none,%left,%
+  numberstyle=\scriptsize,%\tiny
+  stepnumber=5,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  %frameround=ftff,
+  %frame=single,
+  belowcaptionskip=.75\baselineskip
+  %frame=L
+}
+% ****************************************************************************************************
+
+
+
+
+% ****************************************************************************************************
+% 6. Last calls before the bar closes
+% ****************************************************************************************************
+% ********************************************************************
+% Her Majesty herself
+% ********************************************************************
+\usepackage{classicthesis}
+
+
+% ********************************************************************
+% Fine-tune hyperreferences (hyperref should be called last)
+% ********************************************************************
+\hypersetup{%
+  %draft, % hyperref's draft mode, for printing see below
+  colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+  % uncomment the following line if you want to have black links (e.g., for printing)
+  %colorlinks=false, linktocpage=false, pdfstartpage=3, pdfstartview=FitV, pdfborder={0 0 0},%
+  breaklinks=true, pageanchor=true,%
+  pdfpagemode=UseNone, %
+  % pdfpagemode=UseOutlines,%
+  plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+  hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+  urlcolor=ImperialRed, linkcolor=ImperialBlue, citecolor=ImperialGreen, %pagecolor=RoyalBlue,%
+  %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+  pdftitle={\myTitle},%
+  pdfauthor={\textcopyright\ \myName, \myUni, \myDepartment},%
+  pdfsubject={},%
+  pdfkeywords={},%
+  pdfcreator={pdfLaTeX},%
+  pdfproducer={LaTeX with hyperref and classicthesis}%
+}
+
+
+% ********************************************************************
+% Setup autoreferences (hyperref and babel)
+% ********************************************************************
+% There are some issues regarding autorefnames
+% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=latexwords
+% you have to redefine the macros for the
+% language you use, e.g., american, ngerman
+% (as chosen when loading babel/AtBeginDocument)
+% ********************************************************************
+\makeatletter
+\@ifpackageloaded{babel}%
+  {%
+    \addto\extrasamerican{%
+      \renewcommand*{\figureautorefname}{Figure}%
+      \renewcommand*{\tableautorefname}{Table}%
+      \renewcommand*{\partautorefname}{Part}%
+      \renewcommand*{\chapterautorefname}{Chapter}%
+      \renewcommand*{\sectionautorefname}{Section}%
+      \renewcommand*{\subsectionautorefname}{Section}%
+      \renewcommand*{\subsubsectionautorefname}{Section}%
+    }%
+    \addto\extrasngerman{%
+      \renewcommand*{\paragraphautorefname}{Absatz}%
+      \renewcommand*{\subparagraphautorefname}{Unterabsatz}%
+      \renewcommand*{\footnoteautorefname}{Fu\"snote}%
+      \renewcommand*{\FancyVerbLineautorefname}{Zeile}%
+      \renewcommand*{\theoremautorefname}{Theorem}%
+      \renewcommand*{\appendixautorefname}{Anhang}%
+      \renewcommand*{\equationautorefname}{Gleichung}%
+      \renewcommand*{\itemautorefname}{Punkt}%
+    }%
+      % Fix to getting autorefs for subfigures right (thanks to Belinda Vogt for changing the definition)
+      \providecommand{\subfigureautorefname}{\figureautorefname}%
+    }{\relax}
+\makeatother
+
+
+% ********************************************************************
+% Development Stuff
+% ********************************************************************
+\listfiles
+%\PassOptionsToPackage{l2tabu,orthodox,abort}{nag}
+%  \usepackage{nag}
+%\PassOptionsToPackage{warning, all}{onlyamsmath}
+%  \usepackage{onlyamsmath}
+
+
+% ****************************************************************************************************
+% 7. Further adjustments (experimental)
+% ****************************************************************************************************
+% ********************************************************************
+% Changing the text area
+% ********************************************************************
+%\areaset[current]{312pt}{761pt} % 686 (factor 2.2) + 33 head + 42 head \the\footskip
+%\setlength{\marginparwidth}{7em}%
+%\setlength{\marginparsep}{2em}%
+
+% ********************************************************************
+% Using different fonts
+% ********************************************************************
+%\usepackage[oldstylenums]{kpfonts} % oldstyle notextcomp
+% \usepackage[osf]{libertine}
+%\usepackage[light,condensed,math]{iwona}
+%\renewcommand{\sfdefault}{iwona}
+%\usepackage{lmodern} % <-- no osf support :-(
+%\usepackage{cfr-lm} %
+%\usepackage[urw-garamond]{mathdesign} <-- no osf support :-(
+%\usepackage[default,osfigures]{opensans} % scale=0.95
+%\usepackage[sfdefault]{FiraSans}
+% \usepackage[opticals,mathlf]{MinionPro} % onlytext
+% ********************************************************************
+%\usepackage[largesc,osf]{newpxtext}
+%\linespread{1.05} % a bit more for Palatino
+% Used to fix these:
+% https://bitbucket.org/amiede/classicthesis/issues/139/italics-in-pallatino-capitals-chapter
+% https://bitbucket.org/amiede/classicthesis/issues/45/problema-testatine-su-classicthesis-style
+% ********************************************************************
+% ****************************************************************************************************
+
+
+% ********************************************************************
+% Using different fonts
+% ********************************************************************
+%\usepackage[oldstylenums]{kpfonts} % oldstyle notextcomp
+%\usepackage[osf]{libertine}
+%\usepackage[light,condensed,math]{iwona}
+%\renewcommand{\sfdefault}{iwona}
+% \usepackage{lmodern} % <-- no osf support :-(
+%\usepackage{cfr-lm} % 
+%\usepackage[urw-garamond]{mathdesign} <-- no osf support :-(
+%\usepackage[default,osfigures]{opensans} % scale=0.95 
+%\usepackage[sfdefault]{FiraSans}
+\usepackage{FiraSans}
+% ****************************************************************************************************
+
+% ********************************************************************
+% Miguel's modifications
+% ********************************************************************
+% Absolute positioning for images (notably Imperial College Logo on main page) 
+\usepackage[absolute]{textpos}
+
+%Set path to Figures
+% \graphicspath{{./Figures/}}
+
+% %Set graphics extensions
+% \DeclareGraphicsExtensions{.eps,.png,.jpg,.pdf}
+
+%Set one and a half spacing
+\usepackage{setspace}
+%\onehalfspace
+\doublespace
+
+%For prettier tables
+\usepackage{booktabs}
+
+%Clear to odd page, taken from http://tex.stackexchange.com/questions/102451/
+\newcommand\cleartooddpage{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
+
+%Make sure tables, equations, and figures are prefixed with the chapter number
+\AtBeginDocument{
+\numberwithin{lstlisting}{chapter}%
+\numberwithin{equation}{chapter}%
+\numberwithin{figure}{chapter}%
+\numberwithin{table}{chapter}%
+}
+
+%For multiple items in one ref
+\usepackage[nameinlink, noabbrev, capitalise]{cleveref}
+
+%Reduce margins slightly to compensate for double spacing
+\usepackage[right=4cm,left=4cm,bottom=3.5cm,top=3.5cm]{geometry}
+
+
+\xdefinecolor{ImperialBlue}{cmyk}{ 1.0, 0.61, 0, 0.35 }
+\xdefinecolor{ImperialLightBlue}{cmyk}{ 0.5, 0.30, 0, 0.22 }
+\xdefinecolor{ImperialRed}{cmyk}{ 0.00, 0.85, 0.85, 0.22 }
+\xdefinecolor{ImperialGreen}{cmyk}{ 0.88, 0.36, 0.93, 0.29 }
+\xdefinecolor{ImperialBrown}{cmyk}{ 0.27, 0.75, 0.98, 0.20 }
+\xdefinecolor{ImperialPurple}{cmyk}{ 0.82, 1.0, 0.33, 0.25 }
+
+
+%#################
+% Ahmed's changes
+%#################
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+
+% fix the cleverref acronym package label `acro:...' multiply defined business
+\makeatletter
+\newcommand*{\org@overidelabel}{}
+\let\org@overridelabel\@verridelabel
+\@ifpackagelater{acronym}{2015/03/21}{% v1.41
+  \renewcommand*{\@verridelabel}[1]{%
+    \@bsphack
+    \protected@write\@auxout{}{\string\AC@undonewlabel{#1@cref}}%
+    \org@overridelabel{#1}%
+    \@esphack
+  }%
+}{% older versions
+  \renewcommand*{\@verridelabel}[1]{%
+    \@bsphack
+    \protected@write\@auxout{}{\string\undonewlabel{#1@cref}}%
+    \org@overridelabel{#1}%
+    \@esphack
+  }%
+}
+\makeatother
+
+\pdfoptionpdfminorversion=7

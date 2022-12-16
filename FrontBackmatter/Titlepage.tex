@@ -1,0 +1,39 @@
+%*******************************************************
+% Titlepage
+%*******************************************************
+\pdfbookmark[1]{Title Page}{Title Page}
+\begin{titlepage}
+	% if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
+	\begin{textblock*}{80mm}(17.5mm, 17.5mm)%
+	  \includegraphics[width=7cm]{./Figures/imperial_logo}
+	\end{textblock*}
+    \begin{center}
+        \large
+
+        \hfill
+
+        \vfill\vfill
+
+        \begingroup
+            \color{ImperialBlue}\spacedallcaps{\myTitleLineOne} \\\bigskip
+        \endgroup
+
+        \spacedlowsmallcaps{\myName}
+
+        \vfill\vfill
+
+        \textit{\myDegree} \\
+
+        \vfill
+        Supervised by \\ \spacedlowsmallcaps{\myProf} \\ \& \\ \spacedlowsmallcaps{\myOtherProf}\\
+        % \myGroup \\
+        % \myDepartment \\
+        %\myFaculty \\
+        \myUni \\ \bigskip
+
+        \myTime\\
+
+        \vfill
+
+    \end{center}
+\end{titlepage}
