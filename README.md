@@ -15,5 +15,5 @@ The view shortcut is `Ctrl-Alt-V`.
 On commit - a GitHub Action will also compile the PDF and store it as an artifact of the compilation process.
 To view the compiled PDF, go to the `Actions` tab, select the latest run and you should see an artifact of the build process called `PDF`
 
-# Limitations
+## Limitations
 At the moment, the main entry is hardcoded into the GitHub Actions to be `main.tex`. This limitation does not exist in the local build process.
